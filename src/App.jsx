@@ -7,6 +7,7 @@ import Failure from "./Failure";
 function App() {
   return (
     <Routes>
+            <Route path="/" element={<Home />} />
       <Route path="/:sl" element={<Home />} />
        <Route path='/success' element={<Success/>} />
        <Route path='/failure' element={<Failure/>} />
