@@ -77,9 +77,9 @@ export default function Success() {
                 You’re the verified reader of
               </p>
               <h3 className="text-2xl md:text-3xl font-bold text-green-600 mb-2">
-                Athrayum Priyappetta Ennod
+                Ettavum Priyappetta Ennodu
               </h3>
-              <p className="text-lg text-gray-700">by : Ninna Vijay</p>
+              <p className="text-lg text-gray-700">by : Nimna Vijay</p>
             </div>
 
             {/* Right - MAN KIND Logo */}
