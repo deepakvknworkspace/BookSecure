@@ -82,7 +82,7 @@ export default function Success() {
               <p className="text-lg text-gray-700">by : Nimna Vijay</p>
             </div>
 
-            {/* Right - MAN KIND Logo */}
+
            
           </div>
         </div>

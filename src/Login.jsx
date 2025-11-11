@@ -9,6 +9,16 @@ export default function Login() {
         {/* Decorative background blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 to-green-100/40 blur-3xl -z-10"></div>
 
+
+<div className="w-full max-w-md text-center mb-8">
+        <h1 className="text-xl md:text-2xl text-gray-800 mb-2 leading-relaxed">
+          Every <span className="text-green-600 font-semibold">genuine</span> reader
+        </h1>
+        <h2 className="text-xl md:text-2xl text-gray-800 leading-relaxed">
+          writes a better <span className="text-green-600 font-semibold">story</span> for authors
+        </h2>
+      </div>
+
         {/* Logo and tagline */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
@@ -20,9 +30,7 @@ export default function Login() {
               className="drop-shadow-lg"
             />
           </div>
-          <p className="text-lg text-gray-600 font-light">
-            Every genuine reader writes a better story for authors
-          </p>
+         
         </div>
 
         {/* Verification form */}
@@ -35,7 +43,7 @@ export default function Login() {
       <div className="absolute bottom-6 right-6">
         <div className="w-20 md:w-28 h-auto">
           <img
-            src="/man.png"
+            src="/verified-badge.png"
             alt="Man Kind Logo"
             className="object-contain w-full h-auto drop-shadow-lg"
           />
