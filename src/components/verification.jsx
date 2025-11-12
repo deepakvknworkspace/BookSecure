@@ -1,50 +1,63 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
 import "../index.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function VerificationForm() {
   const [formData, setFormData] = useState({
-    name: "",
     contact: "",
     captcha: "",
-  })
-  const [isLoading, setIsLoading] = useState(false)
-   const [urlSerial, setUrlSerial] = useState(null);
-    const [name, setName] = useState("");
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState("");
   const navigate = useNavigate();
-     const { sl } = useParams(); 
-      console.log('sl is',sl)
-
-
-
+  const { sl } = useParams(); // serial from URL
+  console.log("Serial from URL:", sl);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Predefined / hardcoded serial number
-    const predefinedSerial = "123456";
+    try {
+      // Prepare data to send
+      const payload = {
+       serialNumber: sl,
+        phoneNumber: formData.contact,
+        userName: name, // from the URL
+      };
 
-    // Compare the one from the URL with the hardcoded one
-    if (sl === predefinedSerial) {
-        console.log('virify name is ',name)
-      //Match → Navigate to Success page
-         navigate("/success", { state: { name } });
-    } else {
-      // → Show error
+      const response = await fetch("https://api.securemybook.com/serials/verify-book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      console.log("Backend response:", data);
+
+      if (response.ok && data.success) {
+        // ✅ Book verified successfully
+        navigate("/success", { state: { name } });
+      } else {
+        // ❌ Verification failed
+        navigate("/failure");
+      }
+    } catch (error) {
+      console.error("Error verifying book:", error);
       navigate("/failure");
+    } finally {
       setIsLoading(false);
     }
   };
-
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -72,7 +85,7 @@ export function VerificationForm() {
           id="contact"
           name="contact"
           type="text"
-          placeholder="Enter your email or phone"
+          placeholder="Enter your phone number"
           value={formData.contact}
           onChange={handleChange}
           required
@@ -87,7 +100,9 @@ export function VerificationForm() {
         </label>
         <div className="flex gap-3 items-end">
           <div className="flex-1 bg-gray-100 rounded-lg p-3 border-2 border-gray-300">
-            <div className="font-mono text-lg font-bold text-gray-700 tracking-widest select-none">BIMKABR</div>
+            <div className="font-mono text-lg font-bold text-gray-700 tracking-widest select-none">
+              BIMKABR
+            </div>
           </div>
           <input
             id="captcha"
@@ -106,7 +121,6 @@ export function VerificationForm() {
       <button
         type="submit"
         disabled={isLoading}
-        onClick={handleSubmit}
         className={`w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base rounded-full transition-all duration-200 flex items-center justify-center gap-2 mt-8 ${
           isLoading ? "opacity-70 cursor-not-allowed" : ""
         }`}
@@ -121,5 +135,5 @@ export function VerificationForm() {
         {isLoading ? "Verifying..." : "VERIFY NOW"}
       </button>
     </form>
-  )
+  );
 }
