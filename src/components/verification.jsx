@@ -49,7 +49,7 @@ export function VerificationForm() {
         navigate("/success", { state: { name } });
       } else {
         // ❌ Verification failed
-        navigate("/failure");
+        navigate("/failure", { state: { name ,error} });
       }
     } catch (error) {
       console.error("Error verifying book:", error);
@@ -71,7 +71,7 @@ export function VerificationForm() {
           placeholder="Enter your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 mb-4 border rounded-lg focus:ring-2 focus:ring-blue-500 border-gray-300"
           required
         />
       </div>
@@ -89,33 +89,11 @@ export function VerificationForm() {
           value={formData.contact}
           onChange={handleChange}
           required
-          className="h-12 w-full px-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+          className="h-12 w-full px-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
         />
       </div>
 
-      {/* CAPTCHA Field */}
-      <div className="space-y-2">
-        <label htmlFor="captcha" className="text-sm font-semibold text-gray-700">
-          CAPTCHA
-        </label>
-        <div className="flex gap-3 items-end">
-          <div className="flex-1 bg-gray-100 rounded-lg p-3 border-2 border-gray-300">
-            <div className="font-mono text-lg font-bold text-gray-700 tracking-widest select-none">
-              BIMKABR
-            </div>
-          </div>
-          <input
-            id="captcha"
-            name="captcha"
-            type="text"
-            placeholder="Enter text"
-            value={formData.captcha}
-            onChange={handleChange}
-            required
-            className="h-12 flex-1 px-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-          />
-        </div>
-      </div>
+   
 
       {/* Submit Button */}
       <button
