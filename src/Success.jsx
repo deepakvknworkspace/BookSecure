@@ -38,7 +38,7 @@ export default function Success() {
         {/* Book Image */}
        <div className="w-40 h-60 md:w-56 md:h-84 mx-auto rounded-lg overflow-hidden mb-6">
   <img
-    src="/book.png"
+    src="/book.jpeg"
     alt="Book Cover"
     className="w-full h-full object-cover"
   />
