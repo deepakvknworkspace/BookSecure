@@ -68,13 +68,6 @@ const navigate = useNavigate();
           className="w-20 mb-3"
         />
 
-        <p className="text-sm text-slate-700 font-semibold">
-          SECUREMYBOOK.com
-        </p>
-
-        <p className="text-xs text-slate-500 mt-2 text-center max-w-xs">
-          Every genuine reader writes a better story for authors
-        </p>
       </div>
 
     </div>
