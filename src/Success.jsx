@@ -46,7 +46,7 @@ export default function Success() {
 
 
         {/* Version */}
-        <p className="text-xs text-slate-500 mb-4 tracking-wide">Version : 15</p>
+        <p className="text-xs text-slate-500 mb-4 tracking-wide">Version : 1</p>
 
         {/* Congratulations Image */}
         <img
@@ -91,13 +91,13 @@ export default function Success() {
           className="w-20 mb-3"
         />
 
-        <p className="text-sm text-slate-700 font-semibold">
+        {/* <p className="text-sm text-slate-700 font-semibold">
           SECUREMYBOOK.com
         </p>
 
         <p className="text-xs text-slate-500 mt-2 text-center max-w-xs">
           Every genuine reader writes a better story for authors
-        </p>
+        </p> */}
       </div>
 
     </div>
